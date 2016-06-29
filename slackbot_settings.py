@@ -1,2 +1,3 @@
-API_TOKEN = "xoxb-53731907009-FwYXsDe2aLsFKgBqObrApeoP"
+import os
+API_TOKEN = os.environ.get("SLACK_TOKEN")
 PLUGINS = [ 'hello', 'deadlines' ]
