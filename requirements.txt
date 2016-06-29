@@ -2,6 +2,6 @@ python-dateutil==2.5.3
 requests==2.10.0
 schedule==0.3.2
 six==1.10.0
--e git+https://github.com/nikitaborisov/slackbot.git@b5ff024f593cb0270a6ae9d18b96b9cd498970d0#egg=slackbot
+-e git+https://github.com/nikitaborisov/slackbot.git@spraibot#egg=slackbot
 slacker==0.9.18
 websocket-client==0.37.0
