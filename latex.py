@@ -1,4 +1,4 @@
-from urllib import quote
+from urllib.parse import quote
 from slackbot.bot import listen_to, respond_to
 import json
 
