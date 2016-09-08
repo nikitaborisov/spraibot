@@ -3,6 +3,7 @@ from slackbot.bot import listen_to, respond_to
 import json
 
 @listen_to(r'^\$(.*)\$$')
+@respond_to(r'^\$(.*)\$$')
 def render_latex(message, latex):
     # based on https://github.com/nicolewhite/SlackTeX/blob/master/slacktex/views.py
     latex_url = "http://chart.apis.google.com/chart?cht=tx&chl={latex}".format(
