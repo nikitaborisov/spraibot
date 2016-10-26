@@ -9,7 +9,7 @@ import db
 session = db.Session()
 
 
-@respond_to(r'(.*)(\s+is)?\s+on\s+(.*)', re.IGNORECASE)
+@respond_to(r'(.*\S(?<!is))(\s+is)?\s+on\s+(.*)', re.IGNORECASE)
 def set_deadline(message, item, _, datestr):
     try:
         date = dateutil.parser.parse(datestr).date()
