@@ -10,8 +10,8 @@ import db
 session = db.Session()
 
 
-@respond_to(r'(.*\S(?<!is))(\s+is)?\s+(on|in)\s+(.*)', re.IGNORECASE)
-def set_deadline(message, item, _, __, datestr):
+@respond_to(r'(.*\S(?<!is))(\s+is)?\s+((on|in)\s+\S.*)', re.IGNORECASE)
+def set_deadline(message, item, _, datestr, __):
     parsed = dateparser.parse(datestr)
     if not parsed:
         message.reply("Can't parse date {}".format(datestr))
