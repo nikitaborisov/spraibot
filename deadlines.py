@@ -10,7 +10,7 @@ session = db.Session()
 
 
 @respond_to(r'(.*)(\s+is)?\s+on\s+(.*)', re.IGNORECASE)
-def set_deadline(message, _, item, datestr):
+def set_deadline(message, item, _, datestr):
     try:
         date = dateutil.parser.parse(datestr).date()
     except:
