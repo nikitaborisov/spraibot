@@ -14,6 +14,7 @@ def set_deadline(message, item, _, datestr):
     try:
         date = dateutil.parser.parse(datestr).date()
     except:
+        message.reply("Can't parse date {}".format(datestr))
         return  # can't parse so ignore the date
     today = datetime.date.today()
     if date < today:
