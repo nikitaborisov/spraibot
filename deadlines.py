@@ -1,6 +1,7 @@
 from slackbot.bot import listen_to, respond_to
 import re
 import dateutil.parser
+import dateparser
 import datetime
 import json
 from db import Deadline
@@ -9,13 +10,13 @@ import db
 session = db.Session()
 
 
-@respond_to(r'(.*\S(?<!is))(\s+is)?\s+on\s+(.*)', re.IGNORECASE)
-def set_deadline(message, item, _, datestr):
-    try:
-        date = dateutil.parser.parse(datestr).date()
-    except:
+@respond_to(r'(.*\S(?<!is))(\s+is)?\s+(on|in)\s+(.*)', re.IGNORECASE)
+def set_deadline(message, item, _, __, datestr):
+    parsed = dateparser.parse(datestr)
+    if not parsed:
         message.reply("Can't parse date {}".format(datestr))
         return  # can't parse so ignore the date
+    date = parsed.date()
     today = datetime.date.today()
     if date < today:
         if date.year == today.year:
