@@ -19,6 +19,6 @@ def hello(message):
     message.reply("Hello, {}!".format(message.user["profile"]["first_name"]))
 
 @respond_to("Thank(\s+you|s)", re.IGNORECASE)
-def thanks(message, _)
+def thanks(message, _):
     message.reply("{}, {}!".format(random.choice(welcomes),
         message.user["profile"]["first_name"]))
