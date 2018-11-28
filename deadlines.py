@@ -54,6 +54,18 @@ def list_deadlines(message):
     else:
         message.reply("No deadlines!")
 
+@respond_to(r'xyzzy_clean')
+def clean_deadlines(message):
+    to_clean = []
+    for deadline in session.query(Deadline).order_by(Deadline.date):
+        if deadline.date < datetime.date.today():
+            to_clean.append(deadline)
+    cleaned_names = [x.item for x in to_clean]
+    for deadline in to_clean:
+        session.delete(deadline)
+    message.reply("Cleaned: {}".format(cleaned_names))
+
+
 
 @respond_to('forget(\s+about)?\s+(.*)', re.IGNORECASE)
 def forget_deadline(message, _, match):
