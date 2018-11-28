@@ -63,8 +63,8 @@ def forget_deadline(message, _, match):
     if not q:
         message.reply("No matching deadlines")
     elif len(q) > 1:
-        message.reply("More than one matching deadline: {}".format(x.item
-                                                                   for x in q))
+        message.reply("More than one matching deadline: {}".format([x.item
+                                                                   for x in q]))
     else:
         message.reply("Deleting deadline {}".format(q[0].item))
         session.delete(q[0])
